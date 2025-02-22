@@ -144,6 +144,12 @@ async function run() {
     });
     
 
+    app.post("/user", async(req,res)=>{
+      const userInfo = req.body;
+      const result = await usersCollection.insertOne(userInfo);
+      res.send(result)
+    }) 
+
     console.log("Successfully connected to MongoDB!");
   } finally {
     // Ensures that the client will close when you finish/error
